@@ -1,3 +1,4 @@
+import 'package:flutter_social_ui/screens/homescreen.dart';
 import 'package:flutter_social_ui/widget/customclipper.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,23 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  _pageRouteHomeScreen() {
+    return PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) => HomeScreen(),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          var begin = Offset(0, 1.0);
+          var end = Offset.zero;
+          var curve = Curves.easeOutSine;
+          var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          var offsetAnimation = animation.drive(tween);
+          return SlideTransition(
+            position: offsetAnimation,
+            child: child,
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 10.0,
               ),
               Text(
-                'FOODOGRAM',
+                'FOODFILES',
                 style: TextStyle(
                   fontSize: 28.0,
                   letterSpacing: 5.0,
@@ -73,7 +91,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 20.0,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () =>
+                    Navigator.pushReplacement(context, _pageRouteHomeScreen()),
                 child: Container(
                   height: 45.0,
                   width: 180.0,
