@@ -17,7 +17,11 @@ class CurveClipper extends CustomClipper<Path> {
     Offset curvePoint2 = Offset(3 * size.width / 4, 3 * size.height / 5);
     Offset lastPoint = Offset(size.width, 4 * size.height / 5);
     path.quadraticBezierTo(
-        curvePoint2.dx, curvePoint2.dy, lastPoint.dx, lastPoint.dy);
+      curvePoint2.dx,
+      curvePoint2.dy,
+      lastPoint.dx,
+      lastPoint.dy,
+    );
     path.lineTo(size.width, 0);
     path.close();
     return path;

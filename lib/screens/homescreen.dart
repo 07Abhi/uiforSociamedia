@@ -1,3 +1,4 @@
+import 'package:flutter_social_ui/widget/customdrawer.dart';
 import 'package:flutter_social_ui/widget/pagecarousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_social_ui/data/data.dart';
@@ -25,13 +26,11 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.light,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu),
+        iconTheme: IconThemeData(
           color: Theme.of(context).accentColor,
         ),
+        brightness: Brightness.light,
+        backgroundColor: Colors.white,
         title: Text(
           'FOODFILES',
           style: TextStyle(
@@ -62,6 +61,7 @@ class _HomeScreenState extends State<HomeScreen>
           ],
         ),
       ),
+      drawer: CustomDrawer(),
       body: ListView(
         children: [
           FollowerPanel(),
