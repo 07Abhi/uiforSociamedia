@@ -66,7 +66,10 @@ class _HomeScreenState extends State<HomeScreen>
         children: [
           FollowerPanel(),
           PageCarousel(
-              pageController: _pageController, title: 'Posts', posts: posts),
+            pageController: _pageController,
+            title: 'Food Bites',
+            posts: posts,
+          ),
         ],
       ),
     );

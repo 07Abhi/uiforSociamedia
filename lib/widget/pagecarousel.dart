@@ -150,7 +150,7 @@ class _PageCarouselState extends State<PageCarousel> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
           child: Text(
-            'Food Bites',
+            widget.title,
             style: TextStyle(
               fontFamily: 'Ubuntu',
               fontSize: 22.0,

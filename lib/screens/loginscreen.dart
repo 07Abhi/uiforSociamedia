@@ -14,7 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           var begin = Offset(0, 1.0);
           var end = Offset.zero;
-          var curve = Curves.easeOutSine;
+          var curve = Curves.easeInOut;
           var tween =
               Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
           var offsetAnimation = animation.drive(tween);

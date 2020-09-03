@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social_ui/models/user_model.dart';
 import 'package:flutter_social_ui/widget/customdrawer.dart';
+import 'package:flutter_social_ui/widget/followfollowingpanel.dart';
+import 'package:flutter_social_ui/widget/pagecarousel.dart';
 import 'package:flutter_social_ui/widget/profileclipper.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -13,7 +15,16 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  PageController _pageControllerpost;
+  PageController _pageControllerFav;
   final _scaffKey = GlobalKey<ScaffoldState>();
+  @override
+  void initState() {
+    _pageControllerpost = PageController(initialPage: 0, viewportFraction: 0.6);
+    _pageControllerFav = PageController(initialPage: 0, viewportFraction: 0.6);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +94,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Colors.grey.shade800,
               ),
             ),
+            FollowFollowingPanel(
+                followers: widget.user.followers,
+                following: widget.user.following),
+            PageCarousel(
+              pageController: _pageControllerpost,
+              title: 'Posts',
+              posts: widget.user.posts,
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            PageCarousel(
+              pageController: _pageControllerFav,
+              title: 'Favorites',
+              posts: widget.user.favorites,
+            )
           ],
         ),
       ),
